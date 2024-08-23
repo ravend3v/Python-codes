@@ -1,12 +1,21 @@
+import os
+from dotenv import load_dotenv
 import mysql.connector as mysql_connector
+
+# Ladataan ympäristömuuttujat
+load_dotenv()
+
+# Haetaan ympäristömuuttujat
+DB_USER = os.getenv('DB_USER')
+PASSWORD = os.getenv('PASSWORD')
 
 # Luodaan yhteys tietokantaan
 yhteys = mysql_connector.connect(
     host='localhost',
     port=3306,
     database='flight_game',
-    user='raven',
-    password='password123',
+    user=DB_USER,
+    password=PASSWORD,
     autocommit=True
 )
 
